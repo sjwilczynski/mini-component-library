@@ -26,19 +26,19 @@ const ProgressBar = ({ value, size }) => {
   return (
     <>
       <VisuallyHidden id="loadingLabel">Loading progress</VisuallyHidden>
-      <Wrapper
+      <Container
         role="progressbar"
         aria-valuenow={normalizedValue}
         aria-labelledby="loadingLabel"
         style={sizeStyles}
       >
-        <Content style={{ "--value": normalizedValue + "%" }} />
-      </Wrapper>
+        <Bar style={{ "--value": normalizedValue + "%" }} />
+      </Container>
     </>
   );
 };
 
-const Wrapper = styled.div`
+const Container = styled.div`
   width: 370px;
   height: var(--height);
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
@@ -48,7 +48,7 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-const Content = styled.div`
+const Bar = styled.div`
   width: var(--value);
   background-color: ${COLORS.primary};
   height: 100%;
