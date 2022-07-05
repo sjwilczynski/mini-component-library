@@ -9,14 +9,17 @@ const SIZES = {
   small: {
     "--height": 8 + "px",
     "--border": "none",
+    "--borderRadius": 4 + "px",
   },
   medium: {
     "--height": 12 + "px",
     "--border": "none",
+    "--borderRadius": 4 + "px",
   },
   large: {
     "--height": 24 + "px",
     "--border": `4px solid ${COLORS.transparentGray15}`,
+    "--borderRadius": 8 + "px",
   },
 };
 
@@ -44,7 +47,7 @@ const Container = styled.div`
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
   background-color: ${COLORS.transparentGray15};
   border: var(--border);
-  border-radius: 8px;
+  border-radius: var(--borderRadius);
   overflow: hidden;
 `;
 
