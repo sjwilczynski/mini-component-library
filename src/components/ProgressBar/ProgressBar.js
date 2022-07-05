@@ -8,18 +8,18 @@ import VisuallyHidden from "../VisuallyHidden";
 const SIZES = {
   small: {
     "--height": 8 + "px",
-    "--border": "none",
-    "--borderRadius": 4 + "px",
+    "--radius": 4 + "px",
+    "--padding": 0,
   },
   medium: {
     "--height": 12 + "px",
-    "--border": "none",
-    "--borderRadius": 4 + "px",
+    "--radius": 4 + "px",
+    "--padding": 0,
   },
   large: {
-    "--height": 24 + "px",
-    "--border": `4px solid ${COLORS.transparentGray15}`,
-    "--borderRadius": 8 + "px",
+    "--height": 16 + "px",
+    "--radius": 8 + "px",
+    "--padding": 4 +"px",
   },
 };
 
@@ -35,7 +35,14 @@ const ProgressBar = ({ value, size }) => {
         aria-labelledby="loadingLabel"
         style={sizeStyles}
       >
-        <Bar style={{ "--value": normalizedValue + "%" }} />
+        <BarWrapper>
+          <Bar
+            style={{
+              "--value": normalizedValue + "%",
+              "--height": sizeStyles["--height"],
+            }}
+          />
+        </BarWrapper>
       </Container>
     </>
   );
@@ -43,18 +50,22 @@ const ProgressBar = ({ value, size }) => {
 
 const Container = styled.div`
   width: 370px;
-  height: var(--height);
   box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
   background-color: ${COLORS.transparentGray15};
-  border: var(--border);
-  border-radius: var(--borderRadius);
+  padding: var(--padding);
+  border-radius: var(--radius);
   overflow: hidden;
+`;
+
+const BarWrapper = styled.div`
+  overflow: hidden;
+  border-radius: 4px;
 `;
 
 const Bar = styled.div`
   width: var(--value);
+  height: var(--height);
   background-color: ${COLORS.primary};
-  height: 100%;
 `;
 
 export default ProgressBar;
